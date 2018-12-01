@@ -16,7 +16,10 @@ export default new VueRouter({
   routes: [
     {
       path: '/msite',
-      component: MSite
+      component: MSite,
+      meta:{
+        showFooter:true
+      }
     },
     {
       path: '/profile',
@@ -24,15 +27,24 @@ export default new VueRouter({
     },
     {
       path: '/classify',
-      component: Classify
+      component: Classify,
+      meta:{
+        showFooter:true
+      }
     },
     {
       path: '/seegoods',
-      component: Seegoods
+      component: Seegoods,
+      meta:{
+        showFooter:true
+      }
     },
     {
       path: '/shopcart',
-      component: ShopCart
+      component: ShopCart,
+      meta:{
+        showFooter:true
+      }
     },
     {
       path: '/',

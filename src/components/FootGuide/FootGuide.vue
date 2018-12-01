@@ -2,31 +2,31 @@
   <footer class="footer_guide border-1px">
     <a href="javascript:;" class="guide_item" :class="{on:$route.path === '/msite'}" @click="goto('/msite')">
         <span class="item_icon">
-          <i class="iconfont icon-waimai"></i>
+          <i class="iconfont icon-shouye1"></i>
         </span>
       <span>首页</span>
     </a>
     <a href="javascript:;" class="guide_item" :class="{on:$route.path === '/classify'}" @click="goto('/classify')">
         <span class="item_icon">
-          <i class="iconfont icon-search"></i>
+          <i class="iconfont icon-iconyihuifu-"></i>
         </span>
       <span>分类</span>
     </a>
     <a href="javascript:;" class="guide_item" :class="{on:$route.path === '/seegoods'}" @click="goto('/seegoods')">
         <span class="item_icon">
-          <i class="iconfont icon-dingdan"></i>
+          <i class="iconfont icon-wupin"></i>
         </span>
       <span>识物</span>
     </a>
     <a href="javascript:;" class="guide_item" :class="{on:$route.path === '/shopcart'}" @click="goto('/shopcart')">
         <span class="item_icon">
-          <i class="iconfont icon-geren"></i>
+          <i class="iconfont icon-shopshoppingco"></i>
         </span>
       <span>购物车</span>
     </a>
     <a href="javascript:;" class="guide_item" :class="{on:$route.path === '/profile'}" @click="goto('/profile')">
         <span class="item_icon">
-          <i class="iconfont icon-waimai"></i>
+          <i class="iconfont icon-gerenzhongxin"></i>
         </span>
       <span>个人</span>
     </a>
@@ -41,7 +41,6 @@
     }
   }
 </script>
-
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixins.styl"
   .footer_guide  //footer
@@ -53,7 +52,7 @@
     bottom 0
     background-color #fff
     width 100%
-    height 50px
+    height 85px
     display flex
     .guide_item
       display flex
@@ -66,10 +65,10 @@
       &.on
         color #02a774
       span
-        font-size 13px
+        font-size 28px
         margin-top 2px
         margin-bottom 2px
         .iconfont
-          font-size 22px
+          font-size 40px
 
 </style>
