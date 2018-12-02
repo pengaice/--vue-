@@ -4,12 +4,8 @@
 
 import ajax from './ajax'
 
-export const reqData = ()=>ajax('/data')
+export const reqHomeData = ()=>ajax('/homedata')
+export const reqTopicData = ()=>ajax('/topicdata')
+export const reqNavData = ()=>ajax('/navdata')
 
-export const reqBanner = ()=>ajax('/banner')
 
-export const reqHome = ()=>ajax('/home')
-
-export const reqDetail = ()=>ajax('/detail')
-
-export const reqNav = ()=>ajax('/nav')

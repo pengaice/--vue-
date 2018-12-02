@@ -1,9 +1,10 @@
 
 export default {
-  data: [],
-  banner: [],
-  home: [],
-  detail: [],
-  nav: [],
+  homeData: {}, //首页
+  topicData: {}, // 识物
+  navData: [], // 分类
+  
+  // navList: [],
+  // navDetail:[]
   
 }

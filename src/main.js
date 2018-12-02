@@ -6,7 +6,7 @@ import store from './store'
 import router from './router'
 import './rem'
 import Split from "./components/Split/Split.vue"
-
+import  './mock/mockServer'
 
 //注册全局组件
 Vue.component("Split", Split)

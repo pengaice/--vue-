@@ -31,34 +31,7 @@
   </div>
   <div class="content">
     <!--轮播-->
-    <nav class="msite_nav">
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <a href="javascript:">
-              <img src="./images/nav/nav-m4.jpg" alt="">
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="javascript:">
-              <img src="./images/nav/nav-m2.jpg" alt="">
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="javascript:">
-              <img src="./images/nav/nav-m3.jpg" alt="">
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="javascript:">
-              <img src="./images/nav/nav-m1.jpg" alt="">
-            </a>
-          </div>
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-      </div>
-    </nav>
+    <banner></banner>
     <!--保障 promise-->
     <div class="promise">
       <a href="javascript: ">
@@ -123,16 +96,65 @@
          </li>
        </ul>
      </div>
+    <Split></Split>
+    <!--类目热销榜-->
+    <div class="hotDoor">
+      <div class="creatTop">
+        <div class="left">类目热销榜</div>
+      </div>
+      <div class="contentt">
+        <div class="cloth">
+          <span>服装榜</span>
+          <img src="" alt="">
+        </div>
+        <div class="home">
+          <span>居家榜</span>
+          <img src="" alt="">
+        </div>
+
+      </div>
+    </div>
+    <Split></Split>
+    <!--滑动-->
+    <div class="swap">
+      <ul class="content">
+        <li>
+          <img src="./images/xiaolongxia.png" alt="">
+          <div class="title">小龙虾4-6钱 </div>
+          <p>夏季爆品夏季爆</p>
+          <span>￥98</span>
+        </li>
+        <li>
+          <img src="./images/xiaolongxia.png" alt="">
+          <div class="title">小龙虾4-6钱 </div>
+          <p>夏季爆品夏季爆</p>
+          <span>￥98</span>
+        </li>
+        <li>
+          <img src="./images/xiaolongxia.png" alt="">
+          <div class="title">小龙虾4-6钱 </div>
+          <p>夏季爆品夏季爆</p>
+          <span>￥98</span>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
   <!--dispatch&ndash;&gt; 触发action 固定属性commit传数据 触发mutation&#45;&#45;更新state数据-->
 </template>
 <script>
+  import {mapState} from 'vuex'
   import BScroll from 'better-scroll'
   import Swiper from 'swiper'
   import 'swiper/dist/css/swiper.min.css'
+  import banner from './banner/banner.vue'
   export default{
+    components: {
+      banner
+    },
     mounted(){
+      this.$store.dispatch('getHomeData')
+
       new Swiper('.swiper-container',{
         loop:true,
         pagination: {
@@ -142,7 +164,10 @@
       new BScroll ('.listWrapper',{
         scrollX:true
       })
-     // 给ul标签设置样式宽度
+
+    },
+    computed: {
+      ...mapState(['homeDate']),
     }
   }
 </script>
@@ -226,28 +251,7 @@
           margin auto
   .content
     /*overflow hidden*/
-    .msite_nav
-      bottom-border-1px(#e4e4e4)
-      margin-top 150px
-      height 420px
-      background #fff
-      .swiper-container
-        width 100%
-        height 100%
-        .swiper-wrapper
-          width 100%
-          height 100%
-          .swiper-slide
-            display flex
-            justify-content center
-            align-items flex-start
-            img
-              display inline-block
-              width 100%
-              height 100%
-        .swiper-pagination
-          >span.swiper-pagination-bullet-active
-            background #02a774
+    padding-bottom 100px
     .promise
       color #333
       font-size 28px
@@ -348,6 +352,70 @@
           background-repeat no-repeat
           background-image url("./images/create.png")
           background-position -40px -40px
+    .hotDoor
+      padding 20px
+      height 500px
+      /*background lightblue*/
+      .creatTop
+        width 100%
+        height 100px
+        line-height 100px
+        font-size 36px
+        .left
+          float left
+      .contentt
+        text-align: center
+        height 400px
+        .cloth
+          width 49%
+          height 50%
+          float left
+          margin-right 11px
+          background  #f9f3e4
+          display flex
+          align-items center
+          span
+            font-size 30px
+            margin-left 40px
+          img
+            width 150px
+            height 150px
+            background yellowgreen
+            margin-left 40px
+        .home
+          width 48%
+          height 50%
+          float left
+          margin-right 10px
+          background #ebeff6
+          display flex
+          align-items center
+          span
+            font-size 30px
+            margin-left 40px
+          img
+            width 150px
+            height 150px
+            background yellowgreen
+            margin-left 40px
+    .swap
+      height 400px
+      width 1000px
+      /*background pink*/
+      padding 30px
+      .content
+        li
+          float left
+          margin-right 26px
+          color #646464
+          img
+            width 280px
+            background #f4f4f4
+          p
+            font-size 26px
+            margin 15px 0
+          span
+            color #bc3e43
 
 
 </style>

@@ -3,7 +3,7 @@
     <div class="top">
       <div class="topMain">
         <div class="home">
-          <i class="iconfont icon-shouye1"></i>
+          <i class="iconfont icon-shouye1" @click="$router.replace('/MSite')"></i>
         </div>
         <div class="title">
           <span class="red">发现</span>

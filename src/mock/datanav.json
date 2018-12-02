@@ -1272,7 +1272,8 @@
       "level": "L1",
       "name": "洗护",
       "showIndex": 5,
-      "subCateList": [{
+      "subCateList": [
+        {
           "bannerUrl": "",
           "extra": null,
           "frontDesc": "和风设计，温和清洁",

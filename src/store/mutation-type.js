@@ -1,12 +1,11 @@
-// /**
-//  * Created by asus-z on 2018/11/29.
-//  */
-export const RECEIVE_DATA = 'receive_data'
-
-export const RECEIVE_BANNER = 'receive_banner'
-export const RECEIVE_HOME = 'receive_home'
-export const RECEIVE_DETAIL = 'receive_detail'
-export const RECEIVE_NAV = 'receive_nav'
+/*
+ 包含n个mutation的type名称常量
+ */
+export const RECEIVE_HOMEDATA = 'receive_homedata' //首页
+export const RECEIVE_TOPICDATA = 'receive_topicdata' // 识物
+export const RECEIVE_NAVDATA = 'receive_navdata'  // 分类
+// export const RECEIVE_NAVLIST = 'receive_navlist'  // 分类
+// export const RECEIVE_NAVDETAIL = 'receive_navdetail'  // 分类
 
 
 

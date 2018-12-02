@@ -2,7 +2,7 @@
   <div class="profile">
     <div class="top">
         <div class="home">
-          <i class="iconfont icon-shouye1"></i>
+          <i class="iconfont icon-shouye1" @click="$router.replace('/MSite')"></i>
         </div>
         <div class="title">
           网易严选
