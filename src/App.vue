@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <router-view/>
+    <transition name="fade">
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
+    </transition>
     <FootGuide v-show="$route.meta.showFooter"/>
   </div>
 </template>

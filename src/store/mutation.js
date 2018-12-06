@@ -3,8 +3,9 @@ import {
   RECEIVE_HOMEDATA,
   RECEIVE_TOPICDATA,
   RECEIVE_NAVDATA,
-  RECEIVE_NAVLIST,
-  RECEIVE_NAVDETAIL
+  RECEIVE_CLICKINDEX
+  // RECEIVE_NAVLIST,
+  // RECEIVE_NAVDETAIL
 } from './mutation-type'
 export default {
   [RECEIVE_HOMEDATA](state,{homeData}){
@@ -15,6 +16,9 @@ export default {
   },
   [RECEIVE_NAVDATA](state,{navData}){
     state.navData = navData
+  },
+  [RECEIVE_CLICKINDEX](state,{index}){
+    state.clickIndex = index
   },
   // [RECEIVE_NAVLIST] (state) {
   //   let arr = []

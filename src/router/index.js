@@ -8,6 +8,8 @@ import Classify from '../pages/Classify/Classify.vue'
 import Profile from '../pages/Profile/Profile.vue'
 import Seegoods from '../pages/Seegoods/Seegoods.vue'
 import ShopCart from '../pages/ShopCart/ShopCart.vue'
+import Phone from '../pages/Profile/Phone/Phone.vue'
+import Email from '../pages/Profile/Email/Email.vue'
 // 声明使用vue插件
 Vue.use(VueRouter)
 
@@ -23,7 +25,17 @@ export default new VueRouter({
     },
     {
       path: '/profile',
-      component: Profile
+      component: Profile,
+      children:[
+        {
+          path: '/profile/phone',
+          component: Phone
+        },
+        {
+          path: '/profile/email',
+          component: Email
+        },
+      ]
     },
     {
       path: '/classify',
@@ -46,6 +58,7 @@ export default new VueRouter({
         showFooter:true
       }
     },
+    
     {
       path: '/',
       redirect: '/msite',

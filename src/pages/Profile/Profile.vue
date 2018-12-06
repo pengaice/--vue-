@@ -9,16 +9,29 @@
         </div>
         <div class="login">
           <i class="iconfont icon-sousuo2"></i>
-          <i class="iconfont icon-shopshoppingco"></i>
+          <i class="iconfont icon-shopshoppingco" @click="$router.replace('/shopcart')"></i>
         </div>
       </div>
     <div class="content">
-      <img src="" alt="">
-      <div class="phone">手机号码登陆</div>
-      <div class="email">邮箱账号登陆</div>
-      <div class="quick">手机号快速注册 > </div>
+      <div class="conImg">
+        <img src="./images/logo.png" alt="">
+      </div>
+      <router-view />
+      <div class="loginWay" v-show="$route.path === '/profile'">
+        <div class="phone">
+          <a href="javascript:;" @click="$router.push('/profile/phone')">
+            <span>手机号码登陆</span>
+          </a>
+        </div>
+        <div class="email">
+          <a href="javascript:;" @click="$router.push('/profile/email')">
+            <span>邮箱账号登陆</span>
+          </a>
+        </div>
+      </div>
+
     </div>
-    <div class="other">
+    <div class="other" v-show="$route.path === '/profile'">
       <div class="otherItem">
         <i class="iconfont icon-weixin3"></i>
         微信
@@ -71,36 +84,41 @@ body
           font-size 50px
           margin-right 30px
     .content
-      .phone
-        position absolute
-        text-align: center
-        top 480px
-        left 50px
-        width 650px
-        height 90px
-        font-size 28px
-        line-height 90px
-        color #fff
-        background-color #b4282d
-        border-radius 2px
-      .email
-        position absolute
-        text-align: center
-        top 600px
-        left 50px
-        width 650px
-        height 90px
-        font-size 28px
-        line-height 90px
-        color #b4282d
-        border 1px solid #b4282d
-        border-radius 2px
-      .quick
-        position absolute
-        top 720px
-        left 260px
-        font-size 26px
-        color #666
+      .conImg
+        display flex
+        align-items center
+        justify-content center
+        width 100%
+        height 300px
+        img
+          width 340px
+      .loginWay
+        .phone
+          position absolute
+          text-align: center
+          top 440px
+          left 50px
+          width 650px
+          background-color #b4282d
+          border-radius 2px
+          a
+            color #fff
+            height 90px
+            font-size 28px
+            line-height 90px
+        .email
+          position absolute
+          text-align: center
+          top 580px
+          left 50px
+          width 650px
+          height 90px
+          border 1px solid #b4282d
+          border-radius 2px
+          a
+            font-size 28px
+            line-height 90px
+            color #b4282d
     .other
       position absolute
       bottom 100px

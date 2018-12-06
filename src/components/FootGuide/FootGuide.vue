@@ -46,14 +46,14 @@
   .footer_guide  //footer
     top-border-1px(#e4e4e4)
     position fixed
-    z-index 100
+    z-index 10
     left 0
     right 0
     bottom 0
     background-color #fff
-    width 100%
     height 85px
     display flex
+    border-top: 1px solid #ccc;
     .guide_item
       display flex
       flex 1

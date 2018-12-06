@@ -4,10 +4,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
 import router from './router'
+import VueLazyload from 'vue-lazyload'
 import './rem'
 import Split from "./components/Split/Split.vue"
 import  './mock/mockServer'
-
+import loading from './common/images/loading.gif'
+Vue.use(VueLazyload,{
+  loading
+})
 //注册全局组件
 Vue.component("Split", Split)
 

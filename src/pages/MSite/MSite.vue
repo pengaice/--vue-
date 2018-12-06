@@ -9,36 +9,22 @@
       <div class="search">
         <input type="search" placeholder="搜索商品，共19591款好物"/>
       </div>
-      <div class="login"><span>登陆</span></div>
+      <div class="login" @click="$router.replace('/profile')"><span>登陆</span></div>
     </div>
-    <div class="listWrapper">
-      <ul class="topList" ref="imgUI">
-        <li class="listItem"><a href="javascript: ">推荐</a></li>
-        <li class="listItem"><a href="javascript: ">居家</a></li>
-        <li class="listItem"><a href="javascript: ">鞋包配饰</a></li>
-        <li class="listItem"><a href="javascript: ">服装</a></li>
-        <li class="listItem"><a href="javascript: ">电器</a></li>
-        <li class="listItem"><a href="javascript: ">推荐</a></li>
-        <li class="listItem"><a href="javascript: ">居家</a></li>
-        <li class="listItem"><a href="javascript: ">鞋包配饰</a></li>
-        <li class="listItem"><a href="javascript: ">服装</a></li>
-        <li class="listItem"><a href="javascript: ">电器</a></li>
-      </ul>
-      <div class="topList_right">
-        <i class="iconfont icon-jiantouxia"></i>
-      </div>
-    </div>
+      <!--横向列表-->
+      <TopList></TopList>
   </div>
-  <div class="content">
+  <div class="msiteContent" ref="rating">
+    <div class="content">
     <!--轮播-->
     <banner></banner>
     <!--保障 promise-->
     <div class="promise">
-      <a href="javascript: ">
+      <a href="javascript:; ">
         <img src="./images/dui.png" alt="">
         <span>网易自营品牌</span>
       </a>
-      <a href="javascript: ">
+      <a href="javascript:; ">
         <img src="./images/dui.png" alt="">
         <span>30天无忧退货</span>
       </a>
@@ -47,6 +33,26 @@
         <span>48小时快速退款</span>
       </a>
     </div>
+    <Split></Split>
+    <!--品牌制造商直供-->
+    <div class="creater">
+      <div class="creatTop">
+        <div class="left">品牌制造商直供</div>
+      </div>
+      <ul class="creatContent">
+        <li v-for="(item,index) in homeData.tagList" :key="index" v-if="index<=3">
+          <a href="javascript:;">
+            <div class="ctn">
+              <div class="title">{{item.name}}</div>
+              <span class="proce1">{{item.floorPrice}}</span>
+            </div>
+            <img v-lazy="item.picUrl" alt="">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <Split></Split>
+    <RenGoods></RenGoods>
     <Split></Split>
     <!--新人-->
     <div class="newPerson">
@@ -71,73 +77,61 @@
       </div>
     </div>
     <Split></Split>
-    <!--品牌制造商直供-->
-     <div class="creater">
-       <div class="creatTop">
-         <div class="left">品牌制造商直供</div>
-         <a href="javascript:;"> 更多> </a>
-       </div>
-       <ul class="creatContent">
-         <li>
-           <p>海外制造商</p>
-           <p>9.9元起</p>
-         </li>
-         <li>
-           <p>海外制造商</p>
-           <p>9.9元起</p>
-         </li>
-         <li>
-           <p>海外制造商</p>
-           <p>9.9元起</p>
-         </li>
-         <li>
-           <p>海外制造商</p>
-           <p>9.9元起</p>
-         </li>
-       </ul>
-     </div>
-    <Split></Split>
-    <!--类目热销榜-->
-    <div class="hotDoor">
-      <div class="creatTop">
-        <div class="left">类目热销榜</div>
-      </div>
-      <div class="contentt">
-        <div class="cloth">
-          <span>服装榜</span>
-          <img src="" alt="">
-        </div>
-        <div class="home">
-          <span>居家榜</span>
-          <img src="" alt="">
-        </div>
-
-      </div>
-    </div>
-    <Split></Split>
     <!--滑动-->
-    <div class="swap">
-      <ul class="content">
-        <li>
-          <img src="./images/xiaolongxia.png" alt="">
-          <div class="title">小龙虾4-6钱 </div>
-          <p>夏季爆品夏季爆</p>
-          <span>￥98</span>
-        </li>
-        <li>
-          <img src="./images/xiaolongxia.png" alt="">
-          <div class="title">小龙虾4-6钱 </div>
-          <p>夏季爆品夏季爆</p>
-          <span>￥98</span>
-        </li>
-        <li>
-          <img src="./images/xiaolongxia.png" alt="">
-          <div class="title">小龙虾4-6钱 </div>
-          <p>夏季爆品夏季爆</p>
-          <span>￥98</span>
-        </li>
-      </ul>
+    <scrollt :data="homeData.popularItemList"></scrollt>
+    <Split></Split>
+    <!--人气推荐-->
+    <RenGoods></RenGoods>
+    <Split></Split>
+    <!--滑动部分-->
+    <!--<scrollt></scrollt>-->
+    <!--限时购-->
+    <div class="quick">
+      <div class="left">
+        <div class="yan">严选限时购</div>
+        <span>00</span>: <span>00</span>: <span>00</span>
+        <p>下一场 22：00开始</p>
+      </div>
+      <div class="right">
+        <img src="./images/xiaolongxia.png" alt="">
+      </div>
     </div>
+    <!--福利社-->
+    <div class="fu">
+      <img src="./images/nav/nav-m8.jpg" alt="">
+    </div>
+    <Split></Split>
+    <!--专题精选-->
+    <tiSolit :data="homeData.topicList"></tiSolit>
+    <!--<Split></Split>-->
+    <!--<scrollt></scrollt>-->
+    <Split></Split>
+   <!--居家好物-->
+   <Goods :data="homeData.cateList"></Goods>
+    <Split></Split>
+    <!--洗护好物-->
+    <Goods/>
+    <!--版权-->
+    <div class="copyright">
+      <div class="content">
+        <div class="bd">
+          <a href="javascript:;" class="goApp">下载APP</a>
+          <a href="javascript:;">电脑版</a>
+        </div>
+        <p class="desc">
+          <span>网易公司版权所有 © 1997-2018</span>
+          <br>
+          <span>食品经营许可证：JY13301080111719</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="goTop" >
+    <!--@click="goTop"-->
+    <span>
+      <img src="./images/goTop.png" alt="">
+    </span>
   </div>
 </div>
   <!--dispatch&ndash;&gt; 触发action 固定属性commit传数据 触发mutation&#45;&#45;更新state数据-->
@@ -148,274 +142,370 @@
   import Swiper from 'swiper'
   import 'swiper/dist/css/swiper.min.css'
   import banner from './banner/banner.vue'
+  import scrollt from './scrollt/scrollt.vue'
+  import TopList from './TopList/TopList.vue'
+  import Goods from './Goods/Goods.vue'
+  import RenGoods from './RenGoods/RenGoods.vue'
+  import tiSolit from './tiSolit/tiSolit.vue'
   export default{
     components: {
-      banner
+      banner,
+      scrollt,
+      Goods,
+      RenGoods,
+      TopList,
+      tiSolit
     },
     mounted(){
-      this.$store.dispatch('getHomeData')
-
-      new Swiper('.swiper-container',{
-        loop:true,
-        pagination: {
-          el:'.swiper-pagination'
-        }
+      this.$store.dispatch('getHomeData',()=>{
+        this.$nextTick(()=>{
+          this.scroll = new BScroll(this.$refs.rating,{click:true})
+        })
       })
-      new BScroll ('.listWrapper',{
-        scrollX:true
-      })
-
+    },
+    methods:{
+//      goTop(){
+//        this.srcoll.scrollTo(0,0,1000)
+//      }
     },
     computed: {
-      ...mapState(['homeDate']),
+      ...mapState(['homeData'])
     }
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixins.styl"
-#app
-.msite
+body,html
   width 100%
   height 100%
-  .top
-    z-index 10
-    position fixed
-    left 0
-    top 0
+  overflow hidden
+  background #fff
+  #app
     width 100%
-    height 140px
-    background #fff
-    .topMain
+    height 100%
+    .msite
       width 100%
-      height 70px
-      line-height 70px
-      text-align   center
-      .logo
-        width 20%
-        float left
-        margin 15px 15px 15px 25px
-        img
-          width 92%
-          height 100%
-      .search
-        width 60%
-        float left
-        margin-right 10px
-        input
-          background-color   #ededed
-          height 50px
-          line-height 50px
+      height 100%
+      margin-bottom 90px
+      .top
+        z-index 100
+        width 100%
+        height 140px
+        background #fff
+        position fixed
+        left 0
+        top 0
+        .topMain
           width 100%
-          border-radius 7px
-          background-image url("./images/search.png")
-          background-repeat no-repeat
-          background-size   30px 30px
-          padding-left 80px
-          background-position left 40px center
-          &::-webkit-input-placeholder
-            font-size 28px
-      .login
-        position absolute
-        top 15px
-        right 15px
-        border solid 1px #b4282d
-        width 9%
-        height 40px
-        line-height 40px
-        text-align center
-        border-radius 6px
-        span
-          font-size 12px
-          color #b4282d
-    .listWrapper
-      width 100%
-      height 70px
-      /*background yellowgreen*/
-      .topList
-        width 1300px
-        height 70px
-        float left
-        li
-          float left
-          margin-left 50px
-          a
+          height 70px
+          line-height 70px
+          text-align   center
+          .logo
+            width 20%
+            float left
+            margin 15px 15px 15px 25px
+            img
+              width 92%
+              height 100%
+          .search
+            width 60%
+            float left
+            margin-right 10px
+            input
+              background-color   #ededed
+              height 50px
+              line-height 50px
+              width 100%
+              border-radius 7px
+              background-image url("./images/search.png")
+              background-repeat no-repeat
+              background-size   30px 30px
+              padding-left 80px
+              background-position left 40px center
+              &::-webkit-input-placeholder
+                font-size 28px
+          .login
+            position absolute
+            top 15px
+            right 15px
+            border solid 1px #b4282d
+            width 9%
+            height 40px
+            line-height 40px
+            text-align center
+            border-radius 6px
+            span
+              font-size 12px
+              color #b4282d
+      .msiteContent
+        width 100%
+        height 100%
+        margin-top 150px
+        box-sizing border-box
+        .content
+          /*padding-bottom 100px*/
+          .promise
             color #333
-            font-size 30px
-      topList_right
-        float left
-        position relative
-        .iconfont
-          position absolute
-          top 0
-          bottom 0
-          margin auto
-  .content
-    /*overflow hidden*/
-    padding-bottom 100px
-    .promise
-      color #333
-      font-size 28px
-      height 70px
-      line-height 70px
-      padding 0 40px
-      a
-        margin-right 20px
-        img
-          width 40px
-          height 40px
-          vertical-align middle
-        span
-          font-size 23px
-          color #333
-    .newPerson
-      text-align center
-      .newTop
-        width 100%
-        height 100px
-        line-height 100px
-        font-size 40px
-      .newInfo
-        width 95%
-        height 400px
-        margin auto
-        margin-bottom 30px
-        .newInfoLeft
-          box-sizing border-box
-          padding 30px
-          position relative
-          float left
-          width 49%
-          height 100%
-          margin-right 5px
-          background #F9E9CF
-          img
-            width 220px
-            position absolute
-            top 100px
-            left 50px
-        .newInfoRight
-          float left
-          width 50%
-          height 98%
-          p
-            position absolute
-            left 30px
-            top 40px
-          .newInfoRightTop
+            font-size 28px
+            height 70px
+            line-height 70px
+            padding 0 40px
+            a
+              margin-right 20px
+              img
+                width 40px
+                height 40px
+                vertical-align middle
+              span
+                font-size 23px
+                color #333
+          .creater
+            padding 10px
+            height 560px
+            width 99%
+            .creatTop
+              width 100%
+              height 100px
+              line-height 100px
+              font-size 36px
+              display flex
+              justify-content center
+              flex-direction column
+              align-items center
+            .creatContent
+              position relative
+              margin  0 10px
+              height 470px
+              overflow hidden
+              li
+                display inline-block
+                position relative
+                float left
+                margin-bottom 10px
+                width 345px
+                height 220px
+                overflow hidden
+                background-color #f4f4f4
+                &:nth-child(odd)
+                  margin-right 10px
+                >a
+                  color #333333
+                  .ctn
+                    position absolute
+                    left 0
+                    top 0
+                    padding 20px 0 0 20px
+                    width 100%
+                    z-index 4
+                    font-size 0
+                    .title
+                      ellipsis()
+                      font-size 28px
+                      line-height 34px
+                      margin-bottom 6px
+                    .proce1,.proce2
+                      font-size 30px
+                      line-height 34px
+                      margin-bottom 6px
+                  >img
+                    width 100%
+                    height 100%
+          .newPerson
+            text-align center
+            .newTop
+              width 100%
+              height 100px
+              line-height 100px
+              font-size 40px
+            .newInfo
+              width 95%
+              height 400px
+              margin auto
+              margin-bottom 30px
+              .newInfoLeft
+                box-sizing border-box
+                padding 30px
+                position relative
+                float left
+                width 49%
+                height 100%
+                margin-right 5px
+                background #F9E9CF
+                img
+                  width 220px
+                  position absolute
+                  top 100px
+                  left 50px
+              .newInfoRight
+                float left
+                width 50%
+                height 98%
+                p
+                  position absolute
+                  left 30px
+                  top 40px
+                .newInfoRightTop
+                  width 100%
+                  height 49.6%
+                  margin-bottom 5px
+                  background #fbe2d3
+                  position relative
+                  fu
+                    float left
+                  img
+                    width 200px
+                    position absolute
+                    top 10px
+                    right 10px
+                .newInfoRightBottom
+                  width 100%
+                  height 50%
+                  margin-top 5px
+                  background #ffecc2
+                  position relative
+                  img
+                    width 220px
+                    position absolute
+                    top 10px
+                    right 10px
+
+          .quick
+            padding 20px
             width 100%
-            height 49.6%
-            margin-bottom 5px
-            background #fbe2d3
-            position relative
-            fu
+            height 300px
+            .left
+              width 40%
+              height 80%
+              margin-top 50px
+              margin-left 50px
+              color #494949
               float left
-            img
-              width 200px
-              position absolute
-              top 10px
-              right 10px
-          .newInfoRightBottom
+              .yan
+                letter-spacing 15px
+                font-size 40px
+                margin-bottom 40px
+                font-weight bold
+              span
+                color #b0b0b0
+                background #444
+                padding 10px
+              p
+                font-size 20px
+                margin-top 40px
+            .right
+              float left
+              margin-left 50px
+              img
+                width 350px
+                height 350px
+
+          .fu
             width 100%
-            height 50%
-            margin-top 5px
-            background #ffecc2
-            position relative
+            height 300px
             img
-              width 220px
-              position absolute
-              top 10px
-              right 10px
+              width 100%
+              height 100%
+          .titl
+            width 100%
+            height 600px
+            .topa
+              display flex
+              width 100%
+              height 100px
+              justify-content center
+              flex-direction column
+              align-items center
+              background yellowgreen
+              .cont
+                font-size 32px
+          .smallGoods
+            width 100%
+            height 500px
+            .homeTop
+              display flex
+              width 100%
+              height 100px
+              justify-content center
+              flex-direction column
+              align-items center
+              .cont
+                font-size 30px
+            .homeWrap
+              padding 20px
+              width 100%
+              .homeItem
+                width 46%
+                height 500px
+                margin-right 20px
+                float left
+                margin-bottom 30px
+                .imgItem
+                  width 100%
+                  height 67%
+                  display flex
+                  background #f4f4f4
+                  flex-direction column
+                  align-items center
+                  img
+                    width 80%
+                .imgBottom
+                  width 98%
+                  height 70px
+                  display flex
+                  justify-content center
+                  flex-direction column
+                  background #f1ece2
+                  padding-left 10px
+                  color #9f8a60
+                  font-size 28px
+                .imgTitle
+                  margin 10px
+                  color #6c6c6c
+                  font-size 32px
+                .price
+                  color #d17b7e
+                  margin 10px
+          .copyright
+            background-color #414141
+            .content
+              text-align center
+              padding 54px 20px 38px 30px
+              .bd
+                a
+                  display inline-block
+                  width 150px
+                  height 60px
+                  border: 1px solid #999;
+                  color #ffffff
+                  font-size 26px
+                  line-height 62px
+                  &.goApp
+                    margin-right 50px
+              .desc
+                margin-top 36px
+                color #999999
+                line-height 32px
+                span
+                  font-size 26px
+      .goTop{
+        width 80 px
+        height  80 px
+        background  #fff;
+        border-radius  50%;
+        text-align  center;
+        position  fixed;
+        bottom  120 px
+        right  20 px
+        z-index  5;
+        span{
+          display  flex;
+          align-items  center;
+          justify-content  center;
+          height  100%;
+          img{
+            width 60px
+          }
+        }
 
-    .creater
-      padding 30px
-      height 500px
-      /*background lightblue*/
-      .creatTop
-        width 100%
-        height 100px
-        line-height 100px
-        font-size 36px
-        .left
-          float left
-        a
-          float right
-          color #333
-
-      .creatContent
-        text-align: center
-        height 400px
-        li
-          width 45%
-          height 50%
-          float left
-          padding 10px
-          background-repeat no-repeat
-          background-image url("./images/create.png")
-          background-position -40px -40px
-    .hotDoor
-      padding 20px
-      height 500px
-      /*background lightblue*/
-      .creatTop
-        width 100%
-        height 100px
-        line-height 100px
-        font-size 36px
-        .left
-          float left
-      .contentt
-        text-align: center
-        height 400px
-        .cloth
-          width 49%
-          height 50%
-          float left
-          margin-right 11px
-          background  #f9f3e4
-          display flex
-          align-items center
-          span
-            font-size 30px
-            margin-left 40px
-          img
-            width 150px
-            height 150px
-            background yellowgreen
-            margin-left 40px
-        .home
-          width 48%
-          height 50%
-          float left
-          margin-right 10px
-          background #ebeff6
-          display flex
-          align-items center
-          span
-            font-size 30px
-            margin-left 40px
-          img
-            width 150px
-            height 150px
-            background yellowgreen
-            margin-left 40px
-    .swap
-      height 400px
-      width 1000px
-      /*background pink*/
-      padding 30px
-      .content
-        li
-          float left
-          margin-right 26px
-          color #646464
-          img
-            width 280px
-            background #f4f4f4
-          p
-            font-size 26px
-            margin 15px 0
-          span
-            color #bc3e43
-
-
+      }
 </style>

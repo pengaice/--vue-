@@ -1,0 +1,115 @@
+<template>
+  <div class="msite_nav">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="(item,index) in data" :key="index">
+          <a href="javascript:">
+            <div class="content">
+              <div class="subTitle">{{item.subTitle}}</div>
+              <div class="title">{{item.title}}</div>
+              <div class="desc">{{item.desc}}</div>
+            </div>
+            <img v-lazy="item.picUrl" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  import Swiper from 'swiper'
+  import 'swiper/dist/css/swiper.min.css'
+  import {mapState} from 'vuex'
+  export default{
+    props:{
+      data:Array
+    },
+    mounted(){
+
+      watch: {
+        this.$nextTick(() => {
+          new Swiper('.swiper-container', {
+            loop: true,
+            spaceBetween: 20,
+            autoplay: true,
+            pagination: {
+              el: '.swiper-pagination'
+            }
+          })
+        })
+      }
+    },
+  }
+</script>
+
+<style lang="stylus" rel="stylesheet/stylus">
+  @import "../../../common/stylus/mixins.styl"
+  .msite_nav
+    bottom-border-1px(#e4e4e4)
+    margin-top 90px
+    height 420px
+    background #fff
+    .swiper-container
+      width 100%
+      height 100%
+      .swiper-wrapper
+        width 100%
+        height 100%
+        .swiper-slide
+          display flex
+          justify-content center
+          align-items flex-start
+          .content
+            position absolute
+            top 0
+            left 0
+            bottom 0
+            right 0
+            margin auto
+            display flex
+            align-items center
+            justify-content center
+            flex-direction column
+            width 460px
+            height 200px
+            background-color rgba(255, 255, 255, .9)
+            .subTitle
+              position relative
+              font-size 20px
+              color #7f7f7f
+              line-height 30px
+              padding  0 8px
+              &:before,&:after
+                content ''
+                position absolute
+                top 0
+                bottom 0
+                margin auto
+                width px2rem(24)
+                height 1px
+                background-color #999999
+              &:before
+                left px2rem(-24)
+              &:after
+                right px2rem(-24)
+            .title
+              font-size 32px
+              line-height 50px
+              color #333333
+              margin-top 16px
+              font-weight 700
+            .desc
+              font-size 24px
+              color #333333
+              line-height 36px
+              margin-top 5px
+          img
+            display inline-block
+            width 96%
+            height 96%
+            border-radius 30px
+            padding 10px
+      .swiper-pagination
+        >span.swiper-pagination-bullet-active
+          background #02a774
+</style>

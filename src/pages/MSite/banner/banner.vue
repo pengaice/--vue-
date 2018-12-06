@@ -2,7 +2,7 @@
   <div class="msite_nav">
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="(item,index) in homeData.focusList" :key="item">
+        <div class="swiper-slide" v-for="(item,index) in homeData.focusList" :key="index">
           <a href="javascript:">
             <img :src="item.picUrl" alt="">
           </a>
@@ -24,12 +24,17 @@
   import {mapState} from 'vuex'
   export default{
     mounted(){
-      new Swiper('.swiper-container',{
-        loop:true,
-        pagination: {
-          el:'.swiper-pagination'
-        }
-      })
+
+      watch: {
+        this.$nextTick(() => {
+          new Swiper('.swiper-container', {
+            loop: true,
+            pagination: {
+              el: '.swiper-pagination'
+            }
+          })
+        })
+      }
     },
     computed:{
       ...mapState(['homeData'])
