@@ -29,9 +29,14 @@
         this.$nextTick(() => {
           new Swiper('.swiper-container', {
             loop: true,
+          // autoplay:true,
+            //分页器
             pagination: {
               el: '.swiper-pagination'
-            }
+            },
+             autoplay: {
+               delay: 3000,
+             }
           })
         })
       }

@@ -3,7 +3,7 @@
    <div class="miniteTitle">
      <div class="foryou">专题精选</div>
    </div>
-   <div class="pic-wrapper">
+   <div class="pic-wrapper" ref="pcWrap">
      <ul class="pic-list">
        <li class="pic-item" v-for="(item,index) in data" :key="index">
          <div class="picImg">
@@ -33,7 +33,7 @@
     },
     mounted() {
       this.$nextTick(() => {
-        this.scroll = new BScroll('.pic-wrapper', {
+        this.scroll = new BScroll(this.$refs.pcWrap, {
           click: true,
           scrollX: true,
         })
@@ -61,7 +61,7 @@
       height 450px
       .pic-list
         font-size 0
-        width 3000px
+        width 250%
         height 430px
         .pic-item
           display inline-block

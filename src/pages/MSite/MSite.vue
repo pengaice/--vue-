@@ -17,7 +17,7 @@
   <div class="msiteContent" ref="rating">
     <div class="content">
     <!--轮播-->
-    <banner></banner>
+    <banner/>
     <!--保障 promise-->
     <div class="promise">
       <a href="javascript:; ">
@@ -33,7 +33,7 @@
         <span>48小时快速退款</span>
       </a>
     </div>
-    <Split></Split>
+      <Split></Split>
     <!--品牌制造商直供-->
     <div class="creater">
       <div class="creatTop">
@@ -51,7 +51,6 @@
         </li>
       </ul>
     </div>
-    <Split></Split>
     <RenGoods></RenGoods>
     <Split></Split>
     <!--新人-->
@@ -76,7 +75,6 @@
         </div>
       </div>
     </div>
-    <Split></Split>
     <!--滑动-->
     <scrollt :data="homeData.popularItemList"></scrollt>
     <Split></Split>
@@ -86,16 +84,7 @@
     <!--滑动部分-->
     <!--<scrollt></scrollt>-->
     <!--限时购-->
-    <div class="quick">
-      <div class="left">
-        <div class="yan">严选限时购</div>
-        <span>00</span>: <span>00</span>: <span>00</span>
-        <p>下一场 22：00开始</p>
-      </div>
-      <div class="right">
-        <img src="./images/xiaolongxia.png" alt="">
-      </div>
-    </div>
+   <lastTime></lastTime>
     <!--福利社-->
     <div class="fu">
       <img src="./images/nav/nav-m8.jpg" alt="">
@@ -109,8 +98,6 @@
    <!--居家好物-->
    <Goods :data="homeData.cateList"></Goods>
     <Split></Split>
-    <!--洗护好物-->
-    <Goods/>
     <!--版权-->
     <div class="copyright">
       <div class="content">
@@ -134,7 +121,7 @@
     </span>
   </div>
 </div>
-  <!--dispatch&ndash;&gt; 触发action 固定属性commit传数据 触发mutation&#45;&#45;更新state数据-->
+  <!--dispatch&ndash;&gt; 触发action 固定属性commit传数据 触发mutation更新state数据-->
 </template>
 <script>
   import {mapState} from 'vuex'
@@ -147,6 +134,7 @@
   import Goods from './Goods/Goods.vue'
   import RenGoods from './RenGoods/RenGoods.vue'
   import tiSolit from './tiSolit/tiSolit.vue'
+  import lastTime from './lastTime/lastTime.vue'
   export default{
     components: {
       banner,
@@ -154,7 +142,8 @@
       Goods,
       RenGoods,
       TopList,
-      tiSolit
+      tiSolit,
+      lastTime
     },
     mounted(){
       this.$store.dispatch('getHomeData',()=>{
@@ -245,19 +234,18 @@ body,html
         .content
           /*padding-bottom 100px*/
           .promise
-            color #333
-            font-size 28px
+            color red
             height 70px
             line-height 70px
             padding 0 40px
             a
-              margin-right 20px
+              margin-right 18px
               img
                 width 40px
                 height 40px
                 vertical-align middle
               span
-                font-size 23px
+                font-size 10px
                 color #333
           .creater
             padding 10px
@@ -368,37 +356,6 @@ body,html
                     position absolute
                     top 10px
                     right 10px
-
-          .quick
-            padding 20px
-            width 100%
-            height 300px
-            .left
-              width 40%
-              height 80%
-              margin-top 50px
-              margin-left 50px
-              color #494949
-              float left
-              .yan
-                letter-spacing 15px
-                font-size 40px
-                margin-bottom 40px
-                font-weight bold
-              span
-                color #b0b0b0
-                background #444
-                padding 10px
-              p
-                font-size 20px
-                margin-top 40px
-            .right
-              float left
-              margin-left 50px
-              img
-                width 350px
-                height 350px
-
           .fu
             width 100%
             height 300px

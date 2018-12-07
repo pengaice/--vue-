@@ -16,17 +16,17 @@
       data:Array
     },
     mounted() {
-      this.$store.dispatch('getTopicData')
-      this.$nextTick(() => {
-        this.scroll = new BScroll(this.$refs.wrapper, {
-          click: true,
-          scrollX: true,
+      this.$store.dispatch('getTopicData',()=>{
+        this.$nextTick(() => {
+          this.scroll = new BScroll(this.$refs.wrapper, {
+            click: true,
+            scrollX: true,
+          })
         })
       })
     },
   }
 </script>
-
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../../common/stylus/mixins.styl"
   .wrapper

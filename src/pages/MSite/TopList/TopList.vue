@@ -1,8 +1,11 @@
 <template>
   <div class="listWrapper" ref="imgUI">
     <ul class="topList">
-      <li class="listItem" v-for="(name,index) in navlist" :key="index" :class="{'active':current = index}" @click="currentIndex(index)">
-        <a href="javascript: ">{{name}}</a>
+      <li class="listItem"
+          v-for="(name,index) in navlist"
+          :key="index"
+          @click="currentIndex(index)">
+        <a href="javascript: " :class="{active:current === index}">{{name}}</a>
       </li>
     </ul>
   </div>
@@ -36,7 +39,6 @@
   .listWrapper
     width 100%
     height 70px
-    /*background yellowgreen*/
     .topList
       width 1300px
       height 70px
@@ -47,6 +49,11 @@
         a
           color #333
           font-size 30px
+      .active
+        color #b4282d
+        padding-bottom 4px
+        border-bottom 6px solid #b4282d
+        pointer-events auto
       .iconfont
         position absolute
         top 0

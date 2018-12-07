@@ -1,6 +1,6 @@
 <template>
   <div class="homeGoods">
-    <div class="homeTop" v-if="data">
+    <div class="homeTop" >
       <div class="cont">好物</div>
       <!--{{data.name}}-->
     </div>
@@ -13,7 +13,6 @@
         <div class="imgTitle">{{item.name}}</div>
         <div class="price">￥{{item.retailPrice}}</div>
       </li>
-
       <li class="item">
         <a href="javascript:;" class="move">
           <!--<p>更多{{items.name}}好物</p>-->
@@ -25,13 +24,17 @@
 <script>
   export default {
     props:{
-      data:{
-        type:Array,
-        default:function () {
-           return []
-      }
-      }
+      data:Array
+//      data:{
+//        type:Array,
+//        default:function () {
+//           return []
+//      }
+//      }
     },
+    mounted(){
+      console.log(data);
+    }
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">

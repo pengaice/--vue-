@@ -1,7 +1,6 @@
 /**
  * Created by asus-z on 2018/11/29.
  */
-
 export default {
   NavList (state) {
     let arr=[]
