@@ -1,47 +1,39 @@
 <template>
   <div class="homeGoods">
-    <div class="homeTop" >
-      <div class="cont">好物</div>
-      <!--{{data.name}}-->
+    <div class="goodsContent" v-for="items in data" :key="items.id">
+      <div class="homeTop" >
+        <div class="cont">{{items.name}}好物</div>
+      </div>
+      <ul class="homeWrap">
+        <li class="homeItem" v-for="(item, index) in items.itemList" v-if="index<=4" :key="item.id">
+          <div class="imgItem">
+            <img v-lazy="item.listPicUrl" alt="">
+          </div>
+          <div class="imgBottom">{{item.simpleDesc}}</div>
+          <div class="imgTitle">{{item.name}}</div>
+          <div class="price">￥{{item.retailPrice}}</div>
+        </li>
+        <li class="morea">
+          <a href="javascript:;" class="move">
+            <div>更多{{items.name}}好物</div>
+          </a>
+        </li>
+      </ul>
     </div>
-    <ul class="homeWrap" v-if="data">
-      <li class="homeItem" v-for="(item, index) in data.itemList" :key="index">
-        <div class="imgItem">
-          <img v-lazy="item.listPicUrl" alt="">
-        </div>
-        <div class="imgBottom">{{item.simpleDesc}}</div>
-        <div class="imgTitle">{{item.name}}</div>
-        <div class="price">￥{{item.retailPrice}}</div>
-      </li>
-      <li class="item">
-        <a href="javascript:;" class="move">
-          <!--<p>更多{{items.name}}好物</p>-->
-        </a>
-      </li>
-    </ul>
   </div>
 </template>
 <script>
   export default {
     props:{
       data:Array
-//      data:{
-//        type:Array,
-//        default:function () {
-//           return []
-//      }
-//      }
     },
-    mounted(){
-      console.log(data);
-    }
   }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../../common/stylus/mixins.styl"
   .homeGoods
     width 100%
-    height 670px
+    background #fff
     .homeTop
       display flex
       width 100%
@@ -54,6 +46,7 @@
     .homeWrap
       padding 20px
       width 100%
+      height 1400px
       .homeItem
         width 46%
         height 500px
@@ -86,4 +79,11 @@
         .price
           color #d17b7e
           margin 15px
+      .morea
+        float left
+        width 46%
+        height 500px
+        text-align: center
+
+
 </style>

@@ -97,7 +97,6 @@
     <Split></Split>
    <!--居家好物-->
    <Goods :data="homeData.cateList"></Goods>
-    <Split></Split>
     <!--版权-->
     <div class="copyright">
       <div class="content">
@@ -113,11 +112,14 @@
       </div>
     </div>
   </div>
+
   </div>
   <div class="goTop" >
     <!--@click="goTop"-->
     <span>
-      <img src="./images/goTop.png" alt="">
+      <a href="#">
+        <img src="./images/goTop.png" alt="">
+      </a>
     </span>
   </div>
 </div>
@@ -168,7 +170,7 @@ body,html
   width 100%
   height 100%
   overflow hidden
-  background #fff
+  background #fff !important
   #app
     width 100%
     height 100%
@@ -229,9 +231,9 @@ body,html
       .msiteContent
         width 100%
         height 100%
-        margin-top 150px
-        box-sizing border-box
         .content
+          width 100%
+          padding-top 150px
           /*padding-bottom 100px*/
           .promise
             color red
@@ -423,11 +425,17 @@ body,html
                   color #d17b7e
                   margin 10px
           .copyright
+            position relative
+            bottom 90px
+            left 0
+            right 0
+            margin-top 280px
             background-color #414141
             .content
               text-align center
-              padding 54px 20px 38px 30px
+              padding 54px 20px 38px 0px
               .bd
+                text-align center
                 a
                   display inline-block
                   width 150px

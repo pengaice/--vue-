@@ -25,7 +25,7 @@
           </div>
           <ul>
             <li class="item" v-for="(item,index) in rightUl.list" :key="index">
-              <img v-lazy="item.wapBannerUrl" alt="">
+              <img :src="item.wapBannerUrl" alt="">
               <span>{{item.name}}</span>
             </li>
           </ul>
@@ -34,7 +34,7 @@
     </div>
   </div>
 </template>
-<script>
+   <script>
   import {mapGetters,mapState} from 'vuex'
   import BScroll from 'better-scroll'
   export default{

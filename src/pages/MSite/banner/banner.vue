@@ -51,7 +51,6 @@
   @import "../../../common/stylus/mixins.styl"
   .msite_nav
     bottom-border-1px(#e4e4e4)
-    margin-top 150px
     height 420px
     background #fff
     .swiper-container
